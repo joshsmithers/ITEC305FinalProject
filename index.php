@@ -9,5 +9,8 @@
 </head>
 <body>
 
+    <h1>Welcome to Trivia Quizzes!</h1>
+    <h3>Please select which quiz you would like to take</h3>
+
 </body>
 </html>
