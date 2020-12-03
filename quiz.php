@@ -9,5 +9,30 @@
 </head>
 <body>
 
+
+
+
+<?php
+
+// db proof-of-concept
+// connecting to old db for my class last semester
+// prints out everything from the "Items"
+
+$user= "csciremote";
+$pass= "deltabravo2020";
+try {
+    $db = new PDO('mysql:host=23.236.194.106:3306;dbname=csci300', $user, $pass);
+    foreach($db->query('SELECT * FROM Items') as $row) {
+        print_r($row);
+        ?><br><?php
+    }
+    $db = null;
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+?>
+
+
 </body>
 </html>
