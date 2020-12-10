@@ -9,22 +9,36 @@
 </head>
 <body>
 
-
-
-
 <?php
-
-// db proof-of-concept
-// connecting to old db for my class last semester
-// prints out everything from the "Items"
-
-$user= "csciremote";
-$pass= "";
+$test = "trivia1";  //TODO: get this to work in $stmnt
+$user = "csciremote";
+$pass = "";
 try {
     $db = new PDO('mysql:host=23.236.194.106:3306;dbname=itec305', $user, $pass);
-    foreach($db->query('SELECT * FROM trivia1') as $row) {
-        print_r($row);
-        ?><br><?php
+    $stmnt = $db->query('SELECT * FROM trivia2');
+    foreach ($stmnt as $row) {
+        ?>
+        <div><?php
+        //print_r($row);
+        $question = $row['question'];
+        $answer = array($row['correct_answer'], $row['wrong_answer1'], $row['wrong_answer2'], $row['wrong_answer3']);
+        shuffle($answer);
+        ?>
+        <br><br>
+        <?= $question ?>
+        <form>
+            <?php
+            for ($i = 0; $i < 4; $i++) {
+                $thisAnswer = $answer[$i];
+                ?>
+                <input type="radio" name="ans1" value="<?= $thisAnswer ?>"/><?= $thisAnswer ?>
+                <br>
+                <?php
+            }
+            ?>
+        </form>
+        </div>
+        <?php
     }
     $db = null;
 } catch (PDOException $e) {
@@ -32,7 +46,6 @@ try {
     die();
 }
 ?>
-
 
 </body>
 </html>
