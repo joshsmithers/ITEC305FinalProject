@@ -19,10 +19,10 @@
 // prints out everything from the "Items"
 
 $user= "csciremote";
-$pass= "deltabravo2020";
+$pass= "";
 try {
-    $db = new PDO('mysql:host=23.236.194.106:3306;dbname=csci300', $user, $pass);
-    foreach($db->query('SELECT * FROM Items') as $row) {
+    $db = new PDO('mysql:host=23.236.194.106:3306;dbname=itec305', $user, $pass);
+    foreach($db->query('SELECT * FROM trivia1') as $row) {
         print_r($row);
         ?><br><?php
     }
