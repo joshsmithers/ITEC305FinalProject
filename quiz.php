@@ -10,12 +10,17 @@
 <body>
 
 <?php
-$test = "trivia1";  //TODO: get this to work in $stmnt
+$test = "trivia1";  //TODO: $_GET this from index.php
+$numberOfQuestions = 10;
 $user = "csciremote";
 $pass = "";
 try {
     $db = new PDO('mysql:host=23.236.194.106:3306;dbname=itec305', $user, $pass);
-    $stmnt = $db->query('SELECT * FROM trivia2');
+    $stmnt = $db->query('SELECT * FROM ' .$test. ' ORDER BY RAND() LIMIT ' .$numberOfQuestions);
+//    if ($stmnt->rowCount() < $numberOfQuestions) {
+//
+//    }
+
     foreach ($stmnt as $row) {
         ?>
         <div><?php
