@@ -50,7 +50,13 @@ try {
     print "Error!: " . $e->getMessage() . "<br/>";
     die();
 }
+
+<form action = results.php>
+        </form>
 ?>
+
+
+
 
 </body>
 </html>
