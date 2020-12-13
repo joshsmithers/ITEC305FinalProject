@@ -10,7 +10,7 @@
 <body>
 
 <?php
-$test = "trivia1";  //TODO: $_GET this from index.php
+$test = $_GET["quiz"];
 $numberOfQuestions = 10;
 $user = "csciremote";
 $pass = "";
@@ -51,8 +51,8 @@ try {
     die();
 }
 
-<form action = results.php>
-        </form>
+//<form action = results.php>
+//        </form>
 ?>
 
 
