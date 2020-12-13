@@ -9,5 +9,9 @@
 </head>
 <body>
     <h1>Results</h1>
+
+
+    <br>
+    <a href="index.php?quiz=trivia2">Return to quiz choice</a>
 </body>
 </html>
