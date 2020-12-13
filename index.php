@@ -13,14 +13,15 @@
 <h1>Welcome to Trivia Quizzes!</h1>
 <h3>Please select which quiz you would like to take</h3>
 
-<button type="State capitals quiz" action="quiz.php?quiz=trivia1">State capitals quiz
+<!--<button type="State capitals quiz" action="quiz.php?quiz=trivia1">-->
+<!--    State capitals quiz-->
+<!--</button>-->
+<!---->
+<!---->
+<!--<button type="Movie trivia quiz" onclick="quiz.php?quiz=trivia2">-->
+<!--    Movie trivia quiz-->
+<!--</button>-->
 
-</button>
-
-
-<button type="Movie trivia quiz" onclick="quiz.php?quiz=trivia2">Movie trivia quiz
-
-</button>
 <br>
 <a href="quiz.php?quiz=trivia1">State Capitals Quiz</a>
 <br>

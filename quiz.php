@@ -11,51 +11,51 @@
 
 <?php
 $test = $_GET["quiz"];
-$numberOfQuestions = 10;
+$numberOfQuestions = 10;  // SET THIS TO SOMETHING SMALLER FOR TESTING
 $user = "csciremote";
 $pass = "";
 try {
     $db = new PDO('mysql:host=23.236.194.106:3306;dbname=itec305', $user, $pass);
-    $stmnt = $db->query('SELECT * FROM ' .$test. ' ORDER BY RAND() LIMIT ' .$numberOfQuestions);
+    $stmnt = $db->query('SELECT * FROM ' . $test . ' ORDER BY RAND() LIMIT ' . $numberOfQuestions);
 //    if ($stmnt->rowCount() < $numberOfQuestions) {
 //
 //    }
-
-    foreach ($stmnt as $row) {
-        ?>
-        <div><?php
-        //print_r($row);
-        $question = $row['question'];
-        $answer = array($row['correct_answer'], $row['wrong_answer1'], $row['wrong_answer2'], $row['wrong_answer3']);
-        shuffle($answer);
-        ?>
-        <br><br>
-        <?= $question ?>
-        <form>
-            <?php
-            for ($i = 0; $i < 4; $i++) {
-                $thisAnswer = $answer[$i];
+    ?>
+    <form action="results.php">
+        <?php
+        foreach ($stmnt as $row) {
+            ?>
+            <div><?php
+                //print_r($row);
+                $question = $row['question'];
+                $answer = array($row['correct_answer'], $row['wrong_answer1'], $row['wrong_answer2'], $row['wrong_answer3']);
+                shuffle($answer);
                 ?>
-                <input type="radio" name="ans1" value="<?= $thisAnswer ?>"/><?= $thisAnswer ?>
+                <br><br>
+                <?= $question ?>
                 <br>
                 <?php
-            }
-            ?>
-        </form>
-        </div>
-        <?php
-    }
+                for ($i = 0; $i < 4; $i++) {
+                    $thisAnswer = $answer[$i];
+                    ?>
+                    <input type="radio" name="ans1" value="<?= $thisAnswer ?>"/><?= $thisAnswer ?>
+                    <br>
+                    <?php
+                }
+                ?>
+            </div>
+            <?php
+        } ?>
+        <br>
+        <input type="submit"/>
+    </form>
+    <?php
     $db = null;
 } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
     die();
 }
-
-//<form action = results.php>
-//        </form>
 ?>
-
-
 
 
 </body>
