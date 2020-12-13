@@ -27,6 +27,7 @@ try {
             ?>
             <div><?php
                 //print_r($row);
+                $id = $row['id'];
                 $question = $row['question'];
                 $answer = array($row['correct_answer'], $row['wrong_answer1'], $row['wrong_answer2'], $row['wrong_answer3']);
                 shuffle($answer);
@@ -38,7 +39,7 @@ try {
                 for ($i = 0; $i < 4; $i++) {
                     $thisAnswer = $answer[$i];
                     ?>
-                    <input type="radio" name="ans1" value="<?= $thisAnswer ?>"/><?= $thisAnswer ?>
+                    <input type="radio" name="<?=$id?>" value="<?= $thisAnswer ?>"/><?= $thisAnswer ?>
                     <br>
                     <?php
                 }
