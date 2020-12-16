@@ -16,6 +16,30 @@ $test = $_GET["quiz"];
 $numberOfQuestions = 10;  // SET THIS TO SOMETHING SMALLER FOR TESTING
 $user = "csciremote";
 $pass = "";
+?>
+<h1>
+    <?php
+    switch ($test) {
+        case 'trivia1':
+            ?>
+            State Capitals Quiz
+            <?php
+            break;
+        case 'trivia2':
+            ?>
+            Movie Trivia
+            <?php
+            break;
+        default:
+            ?>
+            Trivia Quiz!
+            <?php
+            break;
+    }
+    ?>
+</h1>
+<?php
+
 try {
     $db = new PDO('mysql:host=23.236.194.106:3306;dbname=itec305', $user, $pass);
     $pdoStatement = $db->query('SELECT * FROM ' . $test . ' ORDER BY RAND() LIMIT ' . $numberOfQuestions);
@@ -50,7 +74,7 @@ try {
                 for ($i = 0; $i < 4; $i++) {
                     $thisAnswer = $answer[$i];
                     ?>
-                    <input type="radio" name="<?=$id?>" value="<?= $thisAnswer ?>"/><?= $thisAnswer ?>
+                    <input type="radio" name="<?= $id ?>" value="<?= $thisAnswer ?>"/><?= $thisAnswer ?>
                     <br>
                     <?php
                 }
