@@ -10,30 +10,26 @@
 <body>
     <h1>Results</h1>
 
-
     <?php
+    require_once('question.php');
     session_start();
     $document = new DomDocument;
     $test = $_SESSION['selectedTest'];
     $numberOfQuestions = $_SESSION['numberOfQuestions'];
+    $questionBank = $_SESSION['questionBank'];
     $correctAnswerTracker= 0;
-
-    $user = "csciremote";
-    $pass = "";
-    $db = new PDO('mysql:host=23.236.194.106:3306;dbname=itec305', $user, $pass);
 
     foreach ($_POST as $id => $userAnswer) {
 //        echo "Field ".$id." is ".$userAnswer."<br>";
-        $pdoStatement = $db->query('SELECT * FROM ' . $test . ' WHERE id = ' . $id);
-        foreach ($pdoStatement as $row) {
-            if ($row['id'] == $id) {
+        foreach ($questionBank as $questionObject) {
+            if ($questionObject->id == $id) {
 //                echo "Question: ".$row['question']."<br>Your answer: ".$userAnswer;
 //                echo " Correct Answer is: " .$row['correct_answer']. "<br>";
                 ?>
-                <h3>Question: <?=$row['question']?></h3>
+                <h3>Question: <?=$questionObject->question?></h3>
                     <h4>Your Answer: <?=$userAnswer?></h4>
                 <?php
-                if($row['correct_answer'] == $userAnswer) {
+                if($questionObject->correct_answer == $userAnswer) {
                     $correctAnswerTracker++;
                     ?>
                     <p id="CorrectAnswer">Correct!</p>
@@ -43,12 +39,12 @@
 //                    echo "Incorrect :( <br> Correct Answer: " .$row['correct_answer'];
                     ?>
                     <p id="IncorrectAnswer">Incorrect... <br>
-                    Correct Answer: <?=$row['correct_answer']?></p>
+                    Correct Answer: <?=$questionObject->correct_answer?></p>
                     <?php
                 }
             }
-            echo "<br><br>";
         }
+        echo "<br>";
     }
 
     //calculate score

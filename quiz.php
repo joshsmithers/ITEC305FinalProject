@@ -10,27 +10,37 @@
 <body>
 
 <?php
+require_once('question.php');
 session_start();
 $test = $_GET["quiz"];
-$numberOfQuestions = 10;  // SET THIS TO SOMETHING SMALLER FOR TESTING
+$numberOfQuestions = 3;  // SET THIS TO SOMETHING SMALLER FOR TESTING
 $user = "csciremote";
 $pass = "";
 try {
     $db = new PDO('mysql:host=23.236.194.106:3306;dbname=itec305', $user, $pass);
     $pdoStatement = $db->query('SELECT * FROM ' . $test . ' ORDER BY RAND() LIMIT ' . $numberOfQuestions);
+
+    $questionBank = array();
+    //fetch result set into associative array within array object
+    while ($rowTest = $pdoStatement->fetch()) {
+        $questionBank [] = new Question($rowTest);
+    }
+    var_dump($questionBank);
+
     $_SESSION['selectedTest'] = $test;
+    $_SESSION['questionBank'] = $questionBank;
     $_SESSION['numberOfQuestions'] = $numberOfQuestions;
 
     ?>
     <form method="post" action="results.php">
         <?php
-        foreach ($pdoStatement as $row) {
+        foreach ($questionBank as $questionObject) {
             ?>
             <div><?php
                 //print_r($row);
-                $id = $row['id'];
-                $question = $row['question'];
-                $answer = array($row['correct_answer'], $row['wrong_answer1'], $row['wrong_answer2'], $row['wrong_answer3']);
+                $id = $questionObject->id;
+                $question = $questionObject->question;
+                $answer = array($questionObject->correct_answer, $questionObject->wrong_answer1, $questionObject->wrong_answer2, $questionObject->wrong_answer3);
                 shuffle($answer);
                 ?>
                 <br><br>
