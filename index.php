@@ -11,7 +11,7 @@
 <body>
 
 <h1>Welcome to Trivia Quizzes!</h1>
-<h3>Please select which quiz you would like to take</h3>
+<h2>Please select which quiz you would like to take</h2>
 
 <!--<button type="State capitals quiz" action="quiz.php?quiz=trivia1">-->
 <!--    State capitals quiz-->
@@ -21,12 +21,12 @@
 <!--<button type="Movie trivia quiz" onclick="quiz.php?quiz=trivia2">-->
 <!--    Movie trivia quiz-->
 <!--</button>-->
-
-<br>
+<div id="links">
+<br><br>
 <a href="quiz.php?quiz=trivia1">State Capitals Quiz</a>
-<br>
+<br><br>
 <a href="quiz.php?quiz=trivia2">Movie Trivia</a>
-
+</div>
 
 </body>
 </html>

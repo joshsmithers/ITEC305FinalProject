@@ -1,0 +1,22 @@
+body{
+    font:20pt "Candara Light", sans-serif;
+    text-align: left;
+    background-color: black;
+    color: forestgreen;
+}
+h1{
+    text-align: center;
+    text-decoration: underline;
+}
+h2{
+    text-align: center
+}
+h3{
+    text-align: left;
+}
+h4{
+    text-align: left;
+}
+#links{
+    text-align: center;
+}

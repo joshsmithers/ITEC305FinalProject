@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="quiz.css">
 </head>
 <body>
     <h1>Results</h1>
@@ -38,7 +39,7 @@
                 } else {
 //                    echo "Incorrect :( <br> Correct Answer: " .$row['correct_answer'];
                     ?>
-                    <p id="IncorrectAnswer">Incorrect... <br>
+                    <p id="IncorrectAnswer">Incorrect! <br>
                     Correct Answer: <?=$questionObject->correct_answer?></p>
                     <?php
                 }
@@ -56,6 +57,8 @@
     <h2 id="score"> Your Score: <?=$finalScore?></h2>
 
     <br><br>
-    <a href="index.php?quiz=trivia2">return to quiz choice</a>
+    <div id="links">
+    <a href="index.php?quiz=trivia2">Return to Quiz Choice</a>
+    </div>
 </body>
 </html>
