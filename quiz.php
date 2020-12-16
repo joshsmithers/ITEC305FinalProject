@@ -13,7 +13,7 @@
 require_once('question.php');
 session_start();
 $test = $_GET["quiz"];
-$numberOfQuestions = 3;  // SET THIS TO SOMETHING SMALLER FOR TESTING
+$numberOfQuestions = 10;  // SET THIS TO SOMETHING SMALLER FOR TESTING
 $user = "csciremote";
 $pass = "";
 try {
