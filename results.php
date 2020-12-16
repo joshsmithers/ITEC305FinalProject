@@ -10,10 +10,13 @@
 <body>
     <h1>Results</h1>
 
+
     <?php
     session_start();
+    $document = new DomDocument;
     $test = $_SESSION['selectedTest'];
     $numberOfQuestions = $_SESSION['numberOfQuestions'];
+    $correctAnswerTracker= 0;
 
     $user = "csciremote";
     $pass = "";
@@ -31,6 +34,7 @@
                     <h4>Your Answer: <?=$userAnswer?></h4>
                 <?php
                 if($row['correct_answer'] == $userAnswer) {
+                    $correctAnswerTracker++;
                     ?>
                     <p id="CorrectAnswer">Correct!</p>
                     <?php
@@ -45,13 +49,17 @@
             }
             echo "<br><br>";
         }
-
     }
+
+    //calculate score
+    $finalScore = $correctAnswerTracker / $numberOfQuestions * 100;
+    $finalScore = number_format($finalScore);
 
     ?>
 
+    <h2 id="score"> Your Score: <?=$finalScore?></h2>
 
-    <br>
-    <a href="index.php?quiz=trivia2">Return to quiz choice</a>
+    <br><br>
+    <a href="index.php?quiz=trivia2">return to quiz choice</a>
 </body>
 </html>
