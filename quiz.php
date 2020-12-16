@@ -25,7 +25,7 @@ try {
     while ($rowTest = $pdoStatement->fetch()) {
         $questionBank [] = new Question($rowTest);
     }
-    var_dump($questionBank);
+    //var_dump($questionBank); // this line was used for testing purposes
 
     $_SESSION['selectedTest'] = $test;
     $_SESSION['questionBank'] = $questionBank;
