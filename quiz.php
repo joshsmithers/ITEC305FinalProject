@@ -10,20 +10,21 @@
 <body>
 
 <?php
+session_start();
 $test = $_GET["quiz"];
-$numberOfQuestions = 10;  // SET THIS TO SOMETHING SMALLER FOR TESTING
+$numberOfQuestions = 3;  // SET THIS TO SOMETHING SMALLER FOR TESTING
 $user = "csciremote";
 $pass = "";
 try {
     $db = new PDO('mysql:host=23.236.194.106:3306;dbname=itec305', $user, $pass);
-    $stmnt = $db->query('SELECT * FROM ' . $test . ' ORDER BY RAND() LIMIT ' . $numberOfQuestions);
-//    if ($stmnt->rowCount() < $numberOfQuestions) {
-//
-//    }
+    $pdoStatement = $db->query('SELECT * FROM ' . $test . ' ORDER BY RAND() LIMIT ' . $numberOfQuestions);
+    $_SESSION['selectedTest'] = $test;
+    $_SESSION['numberOfQuestions'] = $numberOfQuestions;
+
     ?>
-    <form action="results.php">
+    <form method="post" action="results.php">
         <?php
-        foreach ($stmnt as $row) {
+        foreach ($pdoStatement as $row) {
             ?>
             <div><?php
                 //print_r($row);

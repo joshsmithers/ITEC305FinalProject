@@ -9,5 +9,45 @@
 </head>
 <body>
     <h1>Results</h1>
+
+    <?php
+    session_start();
+    $test = $_SESSION['selectedTest'];
+    $numberOfQuestions = $_SESSION['numberOfQuestions'];
+
+    $user = "csciremote";
+    $pass = "";
+    $db = new PDO('mysql:host=23.236.194.106:3306;dbname=itec305', $user, $pass);
+
+    foreach ($_POST as $id => $userAnswer) {
+//        echo "Field ".$id." is ".$userAnswer."<br>";
+        $pdoStatement = $db->query('SELECT * FROM ' . $test . ' WHERE id = ' . $id);
+        foreach ($pdoStatement as $row) {
+            if ($row['id'] == $id) {
+//                echo "Question: ".$row['question']."<br>Your answer: ".$userAnswer;
+//                echo " Correct Answer is: " .$row['correct_answer']. "<br>";
+                ?>
+                <h3>Question: <?=$row['question']?></h3>
+                    <h4>Your Answer: <?=$userAnswer?></h4>
+                <?php
+                if($row['correct_answer'] == $userAnswer) {
+                    ?>
+                    <p id="CorrectAnswer">Correct!</p>
+                    <?php
+//                    echo "Correct! <br>";
+                } else {
+//                    echo "Incorrect :( <br> Correct Answer: " .$row['correct_answer'];
+                    ?>
+                    <p id="IncorrectAnswer">Incorrect... <br>
+                    Correct Answer: <?=$row['correct_answer']?></p>
+                    <?php
+                }
+            }
+            echo "<br><br>";
+        }
+
+    }
+
+    ?>
 </body>
 </html>
