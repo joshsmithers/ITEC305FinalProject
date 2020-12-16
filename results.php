@@ -49,5 +49,9 @@
     }
 
     ?>
+
+
+    <br>
+    <a href="index.php?quiz=trivia2">Return to quiz choice</a>
 </body>
 </html>
