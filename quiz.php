@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>TQ: Your Quiz</title>
+    <link rel="shortcut icon" type="image/png" href="resources/logo.png"/>
     <link rel="stylesheet" type="text/css" href="quiz.css">
 </head>
 <body>
@@ -61,30 +62,33 @@ try {
         <?php
         foreach ($questionBank as $questionObject) {
             ?>
-            <div><?php
-                //print_r($row);
-                $id = $questionObject->id;
-                $question = $questionObject->question;
-                $answer = array($questionObject->correct_answer, $questionObject->wrong_answer1, $questionObject->wrong_answer2, $questionObject->wrong_answer3);
-                shuffle($answer);
-                ?>
-                <br><br>
-                <?= $question ?>
-                <br>
-                <?php
-                for ($i = 0; $i < 4; $i++) {
-                    $thisAnswer = $answer[$i];
+            <div id="wrapper">
+                <div id="question"><?php
+                    //print_r($row);
+                    $id = $questionObject->id;
+                    $question = $questionObject->question;
+                    $answer = array($questionObject->correct_answer, $questionObject->wrong_answer1, $questionObject->wrong_answer2, $questionObject->wrong_answer3);
+                    shuffle($answer);
                     ?>
-                    <input type="radio" name="<?= $id ?>" value="<?= $thisAnswer ?>"/><?= $thisAnswer ?>
+                    <?= $question ?>
                     <br>
                     <?php
-                }
-                ?>
+                    for ($i = 0; $i < 4; $i++) {
+                        $thisAnswer = $answer[$i];
+                        ?>
+                        <input type="radio" name="<?= $id ?>" value="<?= $thisAnswer ?>"/><?= $thisAnswer ?>
+                        <br>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
+            <br>
             <?php
         } ?>
-        <br>
-        <input type="submit"/>
+        <div id="links">
+            <input type="submit" value="Submit"/>
+        </div>
     </form>
     <?php
     $db = null;

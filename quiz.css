@@ -4,19 +4,56 @@ body{
     background-color: black;
     color: forestgreen;
 }
+
 h1{
     text-align: center;
     text-decoration: underline;
 }
+
 h2{
     text-align: center
 }
+
 h3{
     text-align: left;
 }
+
 h4{
     text-align: left;
 }
+
 #links{
     text-align: center;
+}
+
+#question {
+    display: inline-block;
+    text-align: left;
+}
+
+#wrapper {
+    margin: auto;
+    width: 50%;
+}
+
+#CorrectAnswer {
+    color: lawngreen;
+}
+
+#IncorrectAnswer {
+    color: red;
+}
+
+input[type=submit]{
+    background-color: #228b22;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    padding: 16px 32px;
+    margin: 4px 2px;
+}
+input:hover{
+    background-color: #19ff19;
+    color: black;
 }
