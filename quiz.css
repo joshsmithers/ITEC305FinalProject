@@ -29,6 +29,11 @@ h4{
 #question {
     display: inline-block;
     text-align: left;
+    background-color: #363636;
+    border: none;
+    border-radius: 15px;
+    padding: 1em;
+    margin: 1em;
 }
 
 #wrapper {

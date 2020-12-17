@@ -83,7 +83,6 @@ try {
                     ?>
                 </div>
             </div>
-            <br>
             <?php
         } ?>
         <div id="links">
