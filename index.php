@@ -1,4 +1,15 @@
 <!doctype html>
+<!--
+“Trivia Quizzes”
+ITEC-305
+Fall 2020
+NYIT
+Hosted at: http://23.236.194.106/
+Anthony Noetzel, ID #1250720
+Logan Pascucci, ID #1254407
+Josh Smith, ID # 1272619
+-->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
