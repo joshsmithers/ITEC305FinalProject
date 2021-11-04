@@ -1,6 +1,6 @@
 # ITEC 305 Final Project
 “Trivia Quizzes”
-Hosted at: http://23.236.194.106/
+Formerly hosted at: http://23.236.194.106/
 Fall 2020
 NYIT
 
